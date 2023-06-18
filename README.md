@@ -2,12 +2,12 @@
 This is a CRUD application for user service
 
 ## Endpoints
-[GET] http://localhost:9091/v1/userservice/users/
+[GET] http://localhost:9192/v1/userservice/users/
 
-[GET] http://localhost:9091/v1/userservice/users/{id}
+[GET] http://localhost:9192/v1/userservice/users/{id}
 
-[POST] http://localhost:9091/v1/userservice/users/addNew
+[POST] http://localhost:9192/v1/userservice/users/addNew
 
-[PUT] http://localhost:9091/v1/userservice/users/{id}
+[PUT] http://localhost:9192/v1/userservice/users/{id}
 
-[DELETE] http://localhost:9091/v1/userservice/users/{id}
+[DELETE] http://localhost:9192/v1/userservice/users/{id}
