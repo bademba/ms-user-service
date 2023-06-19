@@ -9,7 +9,6 @@ import java.util.UUID;
 public class User {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.UUID)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     public String firstName;
@@ -19,8 +18,6 @@ public class User {
     public User(){}
 
     public Integer getId() {
-//        UUID uuid= UUID.randomUUID();
-//        id=uuid.toString();
         return id;
     }
 
