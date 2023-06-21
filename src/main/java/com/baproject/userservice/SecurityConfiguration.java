@@ -1,6 +1,6 @@
 package com.baproject.userservice;
 
-import com.baproject.userservice.jwt.AuthEntryPointJwt;
+//import com.baproject.userservice.jwt.AuthEntryPointJwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,18 +15,18 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    @Autowired
-    private AuthEntryPointJwt unauthorizedHandler;
+    //@Autowired
+    //private AuthEntryPointJwt unauthorizedHandler;
 
 
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-                .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
+                //.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/v1/userservices/**").permitAll()
-                        .requestMatchers("/v1/userservices/**").permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/v1/userservice/**").permitAll()
+                        .requestMatchers("/v1/userservice/**").permitAll()
                         .anyRequest().authenticated());
 
         return http.build();
