@@ -6,15 +6,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
-import io.micrometer.core.instrument.Timer;
 
-import java.io.IOException;
-
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class LoggingInterceptor implements HandlerInterceptor {
-    private Timer timer;
+
 
     private static final Logger logger = LoggerFactory.getLogger(LoggingInterceptor.class);
 

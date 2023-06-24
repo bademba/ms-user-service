@@ -5,7 +5,7 @@
     <!-- Setting up log path and log file name -->
     <Properties>
         <property name="LOG_PATH" value="./logs" />
-        <property name="LOG_FILE_NAME" value="application-log4j2" />
+        <property name="LOG_FILE_NAME" value="my-app" />
     </Properties>
 
     <!-- Setting up logging pattern for console logging -->
