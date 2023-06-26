@@ -2,6 +2,7 @@ package com.baproject.userservice.service;
 
 import com.baproject.userservice.entity.User;
 import com.baproject.userservice.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,9 @@ public class UserService {
     }
 
     public void delete(Integer id) {
-        userRepository.deleteById(id);
+        if(userRepository.existsById(id)){
+            userRepository.deleteById(id);
+        }
+
     }
 }
