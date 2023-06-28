@@ -4,15 +4,14 @@ import com.baproject.userservice.entity.User;
 import com.baproject.userservice.repository.UserRepository;
 import com.baproject.userservice.response.ResponseHandler;
 import com.baproject.userservice.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/userservice")
@@ -24,23 +23,22 @@ public class UserController {
     @Autowired
      UserRepository userRepository;
 
-    UUID uuid = UUID.randomUUID();
     Date date = new Date();
-    SimpleDateFormat DateFor = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+    SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     String timestamp = DateFor.format(date);
 
     @GetMapping("/users")
     public ResponseEntity<Object> users(){
-        return ResponseHandler.generateResponse(uuid,"Users successfully retrieved",HttpStatus.OK,userService.users(),timestamp);
+        return ResponseHandler.generateResponse(UUID.randomUUID(),"Users successfully retrieved",HttpStatus.OK,userService.users(),timestamp);
     }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<Object> findById(@PathVariable Integer id){
-        return ResponseHandler.generateResponse(uuid,"User details retrieved successfully",HttpStatus.OK,userService.get(id),timestamp);
+        return ResponseHandler.generateResponse(UUID.randomUUID(),"User details retrieved successfully",HttpStatus.OK,userService.get(id),timestamp);
     }
     @PostMapping("/users/newUser")
     public ResponseEntity saveUser(@RequestBody User user){
-         return ResponseHandler.generateResponse(uuid,"User created successfully",HttpStatus.CREATED,userService.saveUser(user),timestamp);
+         return ResponseHandler.generateResponse(UUID.randomUUID(),"User created successfully",HttpStatus.CREATED,userService.saveUser(user),timestamp);
     }
 
     @PutMapping("/users/{id}")
@@ -54,7 +52,7 @@ public class UserController {
         currentUser.setLastName(user.getLastName());
 
         User updatedUser =userService.saveUser(currentUser);
-        return ResponseHandler.generateResponse(uuid,"User details updated successfully",HttpStatus.OK,updatedUser,timestamp);
+        return ResponseHandler.generateResponse(UUID.randomUUID(),"User details updated successfully",HttpStatus.OK,updatedUser,timestamp);
     }
 
     @DeleteMapping("/users/{id}")

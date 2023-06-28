@@ -55,9 +55,6 @@
 			<artifactId>spring-boot-starter-json</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-
-
-
 	</dependencies>
 
 	<build>

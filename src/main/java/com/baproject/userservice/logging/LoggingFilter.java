@@ -3,10 +3,14 @@ package com.baproject.userservice.logging;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -31,8 +35,14 @@ public class LoggingFilter extends OncePerRequestFilter {
 
         String requestBody = getStringValue(requestWrapper.getContentAsByteArray(), request.getCharacterEncoding());
         String responseBody = getStringValue(responseWrapper.getContentAsByteArray(), response.getCharacterEncoding());
+
+        //retrieving responseId from the response and assigning it to log id
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readTree(responseBody);
+        String responseId=jsonNode.get("responseId").asText();
+
         LOGGER.info(
-                "REQUEST::"+"|Method="+request.getMethod()+"| RequestURI=" +request.getRequestURI()+"|User-Agent="+request.getHeader("User-Agent")+"| RequestBody="+requestBody+"| ResponseCode="+ response.getStatus()+"| ResponseBody="+ responseBody
+                "REQUEST::"+"|logId="+responseId +"|Method="+request.getMethod()+"| RequestURI=" +request.getRequestURI()+"|User-Agent="+request.getHeader("User-Agent")+"| RequestBody="+requestBody+"| ResponseCode="+ response.getStatus()+"| ResponseBody="+ responseBody
                 +"| TimeTaken(ms)="+timeTaken+"|SourceIP="+request.getRemoteAddr());
         responseWrapper.copyBodyToResponse();
     }
