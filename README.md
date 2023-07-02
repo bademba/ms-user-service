@@ -11,3 +11,5 @@ This is a CRUD application for user service
 [PUT] http://localhost:9192/v1/userservice/users/{id}
 
 [DELETE] http://localhost:9192/v1/userservice/users/{id}
+
+## Logging
