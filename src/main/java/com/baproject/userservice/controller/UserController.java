@@ -34,7 +34,7 @@ public class UserController {
 
     @GetMapping("/users/{id}")
     public ResponseEntity<Object> findById(@PathVariable Integer id){
-        return ResponseHandler.generateResponse(UUID.randomUUID(),"User details retrieved successfully",HttpStatus.OK,userService.get(id),timestamp);
+        return ResponseHandler.generateResponse(UUID.randomUUID(),"User details retrieved successfully",HttpStatus.OK,userService.getUser(id),timestamp);
     }
     @PostMapping("/users/newUser")
     public ResponseEntity saveUser(@RequestBody User user){
@@ -43,7 +43,7 @@ public class UserController {
 
     @PutMapping("/users/{id}")
     public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable Integer id){
-        User currentUser=userService.get(id);
+        User currentUser=userService.getUser(id);
         if(currentUser ==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

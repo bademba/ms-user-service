@@ -13,3 +13,4 @@ This is a CRUD application for user service
 [DELETE] http://localhost:9192/v1/userservice/users/{id}
 
 ## Logging
+Logs are created in the /logs folder
