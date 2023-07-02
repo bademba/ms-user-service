@@ -36,6 +36,9 @@ public class UserController {
     public ResponseEntity<Object> findById(@PathVariable Integer id){
         return ResponseHandler.generateResponse(UUID.randomUUID(),"User details retrieved successfully",HttpStatus.OK,userService.getUser(id),timestamp);
     }
+
+
+
     @PostMapping("/users/newUser")
     public ResponseEntity saveUser(@RequestBody User user){
          return ResponseHandler.generateResponse(UUID.randomUUID(),"User created successfully",HttpStatus.CREATED,userService.saveUser(user),timestamp);

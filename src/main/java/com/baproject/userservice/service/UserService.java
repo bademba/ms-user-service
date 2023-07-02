@@ -1,6 +1,7 @@
 package com.baproject.userservice.service;
 
 import com.baproject.userservice.entity.User;
+import com.baproject.userservice.exception.ResourceNotFoundException;
 import com.baproject.userservice.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,13 @@ public class UserService {
     }
 
     public User getUser(Integer id) {
-        return userRepository.findById(id).get();
+        Optional<User> userOptional = userRepository.findById(id);
+        if (!userOptional.isPresent()) {
+            throw new ResourceNotFoundException(String.format("User with ID %s not found", id));
+        }
+        return userOptional.get();
+        //return userRepository.findById(id).get();
+
     }
 
     public void delete(Integer id) {

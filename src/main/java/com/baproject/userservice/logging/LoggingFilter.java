@@ -42,7 +42,7 @@ public class LoggingFilter extends OncePerRequestFilter {
         String responseId=jsonNode.get("responseId").asText();
 
         LOGGER.info(
-                "REQUEST::"+"|logId="+responseId +"|Method="+request.getMethod()+"| RequestURI=" +request.getRequestURI()+"|User-Agent="+request.getHeader("User-Agent")+"| RequestBody="+requestBody+"| ResponseCode="+ response.getStatus()+"| ResponseBody="+ responseBody
+                "REQUEST::"+"|logId="+responseId+"|Method="+request.getMethod()+"| RequestURI=" +request.getRequestURI()+"|User-Agent="+request.getHeader("User-Agent")+"| RequestBody="+requestBody+"| ResponseCode="+ response.getStatus()+"| ResponseBody="+ responseBody
                 +"| TimeTaken(ms)="+timeTaken+"|SourceIP="+request.getRemoteAddr());
         responseWrapper.copyBodyToResponse();
     }
