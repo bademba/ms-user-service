@@ -36,9 +36,13 @@ public class UserService {
     }
 
     public void delete(Integer id) {
-        if(userRepository.existsById(id)){
-            userRepository.deleteById(id);
+//        if(userRepository.existsById(id)){
+//            userRepository.deleteById(id);
+//        }
+        Optional<User> userOptional = userRepository.findById(id);
+        if (!userOptional.isPresent()) {
+            throw new ResourceNotFoundException(String.format("User with ID %s not found", id));
         }
-
+        userRepository.deleteById(id);
     }
 }

@@ -29,9 +29,9 @@ public class ApiExceptionHandler {
 //        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), new Date(), ex.getMessage(), "Class Not Found On The Classpath");
 //    }
 //
-//    @ExceptionHandler(value = InvocationTargetException.class)
-//    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-//    public ErrorMessage invocationTargetException(InvocationTargetException ex) {
-//        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), new Date(), ex.getMessage(), "Failed To Invoke Method or Constructor");
-//    }
+    @ExceptionHandler(value = InvocationTargetException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorMessage invocationTargetException(InvocationTargetException ex) {
+        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), timestamp, "Internal Server Error", UUID.randomUUID().toString());
+    }
 }
