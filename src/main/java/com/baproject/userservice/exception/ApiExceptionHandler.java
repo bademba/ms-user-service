@@ -20,7 +20,7 @@ public class ApiExceptionHandler {
     @ExceptionHandler(value = ResourceNotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ErrorMessage resourceNotFoundException(ResourceNotFoundException ex) {
-        return new ErrorMessage(HttpStatus.NOT_FOUND.value(), timestamp, "USER NOT FOUND", UUID.randomUUID().toString());
+        return new ErrorMessage(HttpStatus.NOT_FOUND.value(), timestamp, "User not found", UUID.randomUUID().toString());
     }
 
 //    @ExceptionHandler(value = ClassNotFoundException.class)

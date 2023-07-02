@@ -8,7 +8,12 @@ public class ErrorMessage {
     private String message;
     private String responseId;
 
-    public ErrorMessage(int value, String timestamp, String message, String responseId) {
+    public ErrorMessage(int status, String timestamp, String message, String responseId) {
+        super();
+        this.status=status;
+        this.timestamp=timestamp;
+        this.message=message;
+        this.responseId=responseId;
     }
 
 

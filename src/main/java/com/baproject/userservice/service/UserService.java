@@ -30,8 +30,8 @@ public class UserService {
         if (!userOptional.isPresent()) {
             throw new ResourceNotFoundException(String.format("User with ID %s not found", id));
         }
-        return userOptional.get();
-        //return userRepository.findById(id).get();
+        //return userOptional.get();
+        return userRepository.findById(id).get();
 
     }
 
