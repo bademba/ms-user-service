@@ -23,12 +23,6 @@ public class ApiExceptionHandler {
         return new ErrorMessage(HttpStatus.NOT_FOUND.value(), timestamp, "User not found", UUID.randomUUID().toString());
     }
 
-//    @ExceptionHandler(value = ClassNotFoundException.class)
-//    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-//    public ErrorMessage classNotFoundException(ClassNotFoundException ex) {
-//        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), new Date(), ex.getMessage(), "Class Not Found On The Classpath");
-//    }
-//
     @ExceptionHandler(value = InvocationTargetException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorMessage invocationTargetException(InvocationTargetException ex) {
