@@ -1,7 +1,4 @@
 package com.baproject.userservice.exception;
-import org.springframework.http.HttpStatus;
-
-import java.util.Date;
 public class ErrorMessage {
     private int status;
     private String timestamp;
