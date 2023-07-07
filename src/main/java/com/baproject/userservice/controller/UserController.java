@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-     UserRepository userRepository;
+    private  UserRepository userRepository;
 
     Date date = new Date();
     SimpleDateFormat DateFor = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
