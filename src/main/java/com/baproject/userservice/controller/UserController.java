@@ -39,7 +39,7 @@ public class UserController {
 
 
 
-    @PostMapping("/users/newUser")
+    @PostMapping("/users")
     public ResponseEntity saveUser(@RequestBody User user){
          return ResponseHandler.generateResponse(UUID.randomUUID(),"User created successfully",HttpStatus.CREATED,userService.saveUser(user),timestamp);
     }

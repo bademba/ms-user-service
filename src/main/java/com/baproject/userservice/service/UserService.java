@@ -1,8 +1,8 @@
 package com.baproject.userservice.service;
 
 import com.baproject.userservice.entity.User;
-import com.baproject.userservice.exception.ResourceNotFoundException;
 import com.baproject.userservice.repository.UserRepository;
+import com.baproject.userservice.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

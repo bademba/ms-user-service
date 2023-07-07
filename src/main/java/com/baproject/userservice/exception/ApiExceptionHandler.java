@@ -23,6 +23,11 @@ public class ApiExceptionHandler {
         return new ErrorMessage(HttpStatus.NOT_FOUND.value(), timestamp, "User not found", UUID.randomUUID().toString());
     }
 
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ErrorMessage endpointNotFoundException(ResourceNotFoundException ex) {
+        return new ErrorMessage(HttpStatus.NOT_FOUND.value(), timestamp, "Resource not found", UUID.randomUUID().toString());
+    }
     @ExceptionHandler(value = InvocationTargetException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorMessage invocationTargetException(InvocationTargetException ex) {
