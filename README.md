@@ -3,7 +3,7 @@ This is a CRUD application for user service
 
 ## Endpoints
 
-| Endpoint      | Description | Full Endpoint |
+| Operation      | Description | Full Endpoint |
 | ----------- | ----------- | ----------- |
 | GET /userservice/users    | get list of all users | http://localhost:9192/v1/userservice/users|
 | POST /userservice/users   | add a new user | http://localhost:9192/v1/userservice/users |
