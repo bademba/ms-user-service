@@ -1,6 +1,12 @@
+
 # User service
+
+---
+[![Build Status](https://img.shields.io/badge/development-30-blue)](https://github.com/bademba/user-service/tree/master)
+
 This is a CRUD application for user service
 
+---
 ## Endpoints
 
 | Operation      | Description | Full Endpoint |
