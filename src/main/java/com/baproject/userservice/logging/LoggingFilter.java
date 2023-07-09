@@ -41,9 +41,28 @@ public class LoggingFilter extends OncePerRequestFilter {
         JsonNode jsonNode = mapper.readTree(responseBody);
         String responseId=jsonNode.get("responseId").asText();
 
+        //Get OS details
+        String browserDetails =request.getHeader("User-Agent");
+        final String lowerCaseBrowser =browserDetails.toLowerCase();
+        if (lowerCaseBrowser.contains("windows")) {
+            browserDetails="windows";
+        } else if (lowerCaseBrowser.contains("mac")) {
+            browserDetails="Mac";
+        } else if (lowerCaseBrowser.contains("x11")) {
+            browserDetails= "Unix";
+        } else if (lowerCaseBrowser.contains("android")) {
+            browserDetails= "Android";
+        } else if (lowerCaseBrowser.contains("iphone")) {
+            browserDetails= "IPhone";
+        } else {
+            browserDetails= "UnKnown, More-Info: " + browserDetails;
+        }
+        //end of OS details
+
         LOGGER.info(
-                "REQUEST::"+"|logId="+responseId+"|Method="+request.getMethod()+"| RequestURI=" +request.getRequestURI()+"|User-Agent="+request.getHeader("User-Agent")+"| RequestBody="+requestBody+"| ResponseCode="+ response.getStatus()+"| ResponseBody="+ responseBody
-                +"| TimeTaken(ms)="+timeTaken+"|SourceIP="+request.getRemoteAddr());
+                "REQUEST::"+"|logId="+responseId+"|Method="+request.getMethod()+"| RequestURI=" +request.getRequestURI()+"|User-Agent="+request.getHeader("User-Agent")+"| OS="+browserDetails+"| RequestBody="+requestBody+"| ResponseCode="+ response.getStatus()+"| ResponseBody="+ responseBody
+                +"| TimeTaken(ms)="+timeTaken+"|SourceIP="+request.getRemoteAddr()+ " |RemotePort="+request.getRemotePort()+" |ServerName=" +request.getServerName() +"|RemoteHost="+request.getRemoteHost() );
+
         responseWrapper.copyBodyToResponse();
     }
 
