@@ -11,8 +11,14 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "firstName")
     public String firstName;
+
+    @Column(name = "middleName")
     public String middleName;
+
+    @Column(name = "lastName")
     public String lastName;
 
     public User(){}
